@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeFi Portfolio Dashboard - Live market data demonstration">
+    <title>DeFi Portfolio Dashboard | AXIOM VISUAL</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="logo">AXIOM DeFi</div>
+        <button class="wallet-btn" id="walletBtn" aria-label="Connect wallet">
+            Connect Wallet
+        </button>
+    </header>
+    
+    <main class="container">
+        <section class="hero" aria-label="Portfolio overview">
+            <div class="hero-label">Total Portfolio Value</div>
+            <div class="hero-value" id="portfolioValue">$0.00</div>
+            <div class="hero-change" id="portfolioChange">
+                <span class="change-arrow">—</span>
+                <span class="change-value">0.00%</span>
+                <span class="change-period">(24h)</span>
+            </div>
+        </section>
+        
+        <div class="dashboard-grid">
+            <section class="token-list" aria-label="Your assets">
+                <h2 class="section-title">Your Assets</h2>
+                <div id="tokenContainer" class="token-container"></div>
+            </section>
+
+            <section class="chart-container" aria-label="Portfolio performance">
+                <div class="chart-header">
+                    <h2 class="section-title">Portfolio Performance</h2>
+                    <div class="time-filters" role="group" aria-label="Time range">
+                        <button class="time-btn active" data-range="1" aria-pressed="true">1D</button>
+                        <button class="time-btn" data-range="7" aria-pressed="false">7D</button>
+                        <button class="time-btn" data-range="30" aria-pressed="false">30D</button>
+                    </div>
+                </div>
+
+                <svg 
+                class="chart-svg" 
+                id="chartSvg" 
+                aria-hidden="true"
+                viewBox="0 0 400 250"
+                preserveAspectRatio="none"
+                >
+                    <defs>
+                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgb(0,212,255);stop-opacity:0.4" />
+                            <stop offset="100%" style="stop-color:rgb(0,212,255);stop-opacity:0" />
+                        </linearGradient>
+                    </defs>
+                    <path class="chart-area" id="chartArea"></path>
+                    <path class="chart-line" id="chartLine"></path>
+                </svg>
+            </section>
+        </div>
+        
+        <section class="swap-panel" aria-label="Quick swap">
+            <h2 class="section-title">Quick Swap</h2>
+            
+            <div class="swap-input-group">
+                <label class="swap-label" for="fromAmount">From</label>
+                <div class="swap-row">
+                    <input 
+                    type="text"
+                    class="swap-amount"
+                    id="fromAmount"
+                    placeholder="0.0"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-label="Amount to swap from"
+                    >
+                    <div class="swap-token-select" id="fromToken" role="button" tabindex="0">
+                        <span>ETH</span>
+                        <span aria-hidden="true">▼</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="button" class="swap-arrow" id="swapArrow" aria-label="Reverse tokens">
+                <span aria-hidden="true">↓</span>
+            </button>
+
+            <div class="swap-input-group">
+                <label class="swap-label" for="toAmount">To</label>
+                <div class="swap-row">
+                    <input 
+                    type="text"
+                    class="swap-amount"
+                    id="toAmount"
+                    placeholder="0.0"
+                    readonly
+                    inputmode="decimal"
+                    aria-label="Amount to receive"
+                    >
+                    <div class="swap-token-select" id="toToken" role="button" tabindex="0">
+                        <span>USDC</span>
+                        <span aria-hidden="true">▼</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swap-rate" id="swapRate" aria-live="polite">
+                1 ETH = 0 USDC
+            </div>
+            <button class="swap-btn" id="swapBtn" disabled>
+                Enter an amount
+            </button>
+        </section>
+    </main>
+    
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
