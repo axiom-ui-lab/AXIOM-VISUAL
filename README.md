@@ -1,6 +1,6 @@
 # AXIOM DeFi Portfolio Dashboard
 
-Live: https://axiom-ui-lab.github.io/AXIOM-VISUAL/
+https://axiom-ui-lab.github.io/DeFi-Dashboard/
 
 Web3 portfolio dashboard with real-time CoinGecko API, interactive SVG charts, and token swap interface.
 
